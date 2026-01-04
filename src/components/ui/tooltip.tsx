@@ -27,4 +27,16 @@ const TooltipContent = React.forwardRef<
 ));
 TooltipContent.displayName = TooltipPrimitive.Content.displayName;
 
-export { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger };
+const TooltipArrow = React.forwardRef<
+  React.ElementRef<typeof TooltipPrimitive.Arrow>,
+  React.ComponentPropsWithoutRef<typeof TooltipPrimitive.Arrow>
+>(({ className, ...props }, ref) => (
+  <TooltipPrimitive.Arrow
+    ref={ref}
+    className={cn("fill-primary", className)}
+    {...props}
+  />
+));
+TooltipArrow.displayName = TooltipPrimitive.Arrow.displayName;
+
+export { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger, TooltipArrow };
