@@ -1,7 +1,7 @@
 "use client";
 
 import { cn } from "@/lib/utils";
-import { AnimatePresence, motion, Variants } from "framer-motion";
+import { motion, Variants } from "motion/react";
 import { useMemo } from "react";
 
 interface BlurFadeTextProps {
@@ -21,14 +21,15 @@ const BlurFadeText = ({
   text,
   className,
   variant,
+  duration = 0.4,
   characterDelay = 0.03,
   delay = 0,
   yOffset = 8,
   animateByCharacter = false,
 }: BlurFadeTextProps) => {
   const defaultVariants: Variants = {
-    hidden: { y: yOffset, opacity: 0, filter: "blur(8px)" },
-    visible: { y: -yOffset, opacity: 1, filter: "blur(0px)" },
+    hidden: { y: -yOffset, opacity: 0, filter: "blur(8px)" },
+    visible: { y: 0, opacity: 1, filter: "blur(0px)" },
   };
   const combinedVariants = variant || defaultVariants;
   const characters = useMemo(() => Array.from(text), [text]);
@@ -36,16 +37,19 @@ const BlurFadeText = ({
   if (animateByCharacter) {
     return (
       <div className="flex">
-        <AnimatePresence>
-          {characters.map((char, i) => (
+        {characters.map((char, i) => {
+          const charVariants: Variants = {
+            hidden: { y: -yOffset, opacity: 0, filter: "blur(8px)" },
+            visible: { y: 0, opacity: 1, filter: "blur(0px)" },
+          };
+          return (
             <motion.span
               key={i}
               initial="hidden"
               animate="visible"
-              exit="hidden"
-              variants={combinedVariants}
+              variants={charVariants}
               transition={{
-                yoyo: Infinity,
+                duration,
                 delay: delay + i * characterDelay,
                 ease: "easeOut",
               }}
@@ -54,30 +58,27 @@ const BlurFadeText = ({
             >
               {char}
             </motion.span>
-          ))}
-        </AnimatePresence>
+          );
+        })}
       </div>
     );
   }
 
   return (
     <div className="flex">
-      <AnimatePresence>
-        <motion.span
-          initial="hidden"
-          animate="visible"
-          exit="hidden"
-          variants={combinedVariants}
-          transition={{
-            yoyo: Infinity,
-            delay,
-            ease: "easeOut",
-          }}
-          className={cn("inline-block", className)}
-        >
-          {text}
-        </motion.span>
-      </AnimatePresence>
+      <motion.span
+        initial="hidden"
+        animate="visible"
+        variants={combinedVariants}
+        transition={{
+          duration,
+          delay,
+          ease: "easeOut",
+        }}
+        className={cn("inline-block", className)}
+      >
+        {text}
+      </motion.span>
     </div>
   );
 };
