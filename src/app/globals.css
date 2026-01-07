@@ -146,18 +146,26 @@
   }
 
   .prose h1 {
-    @apply text-2xl! font-medium! tracking-tight! leading-tight!;
+    @apply text-2xl! font-semibold! tracking-tight! leading-tight!;
   }
 
   .prose h2 {
-    @apply text-xl! font-medium! tracking-tight! leading-tight!;
+    @apply text-xl! font-semibold! tracking-tight! leading-tight!;
   }
 
   .prose h3 {
-    @apply text-lg! font-medium! tracking-tight! leading-tight!;
+    @apply text-lg! font-semibold! tracking-tight! leading-tight!;
   }
 
-  .prose h4, .prose h5, .prose h6 {
+  .prose h4 {
+    @apply text-base! font-medium! tracking-tight! leading-tight!;
+  }
+
+  .prose h5 {
+    @apply text-base! font-medium! tracking-tight! leading-tight!;
+  }
+
+  .prose h6 {
     @apply text-base! font-medium! tracking-tight! leading-tight!;
   }
 
