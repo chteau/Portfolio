@@ -3,10 +3,10 @@
 
 import { Badge } from "@/components/ui/badge";
 import { cn } from "@/lib/utils";
-import Link from "next/link";
-import Markdown from "react-markdown";
 import { ArrowUpRight } from "lucide-react";
+import Link from "next/link";
 import { useState } from "react";
+import Markdown from "react-markdown";
 
 function ProjectImage({ src, alt }: { src: string; alt: string }) {
   const [imageError, setImageError] = useState(false);
@@ -57,12 +57,17 @@ export function ProjectCard({
   return (
     <div
       className={cn(
-        "flex flex-col h-full border border-border rounded-xl overflow-hidden hover:ring-4 cursor-pointer hover:ring-muted transition-all duration-300",
+        "flex flex-col h-full border border-border rounded-xl overflow-hidden hover:ring-2 cursor-pointer hover:ring-muted transition-all duration-200",
         className
       )}
     >
       <div className="relative shrink-0">
-        <Link href={href || "#"} target="_blank" rel="noopener noreferrer" className="block">
+        <Link
+          href={href || "#"}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="block"
+        >
           {video ? (
             <video
               src={video}
@@ -117,9 +122,7 @@ export function ProjectCard({
           </Link>
         </div>
         <div className="text-xs flex-1 prose max-w-full text-pretty font-sans leading-relaxed text-muted-foreground dark:prose-invert">
-          <Markdown>
-            {description}
-          </Markdown>
+          <Markdown>{description}</Markdown>
         </div>
         {tags && tags.length > 0 && (
           <div className="flex flex-wrap gap-1 mt-auto">

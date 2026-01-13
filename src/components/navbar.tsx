@@ -23,7 +23,7 @@ export default function Navbar() {
                   target={isExternal ? "_blank" : undefined}
                   rel={isExternal ? "noopener noreferrer" : undefined}
                 >
-                  <DockIcon className="rounded-3xl cursor-pointer size-full bg-background p-0 text-muted-foreground/80 hover:text-foreground hover:bg-muted backdrop-blur-3xl border border-border transition-colors shadow-[inset_0_0_5px_2px] shadow-primary/5">
+                  <DockIcon className="rounded-3xl cursor-pointer size-full bg-background p-0 text-muted-foreground hover:text-foreground hover:bg-muted backdrop-blur-3xl border border-border transition-colors">
                     <item.icon className="size-full rounded-sm overflow-hidden object-contain" />
                   </DockIcon>
                 </a>
@@ -39,7 +39,10 @@ export default function Navbar() {
             </Tooltip>
           );
         })}
-        <Separator orientation="vertical" className="h-2/3 m-auto w-px bg-border" />
+        <Separator
+          orientation="vertical"
+          className="h-2/3 m-auto w-px bg-border"
+        />
         {Object.entries(DATA.contact.social)
           .filter(([_, social]) => social.navbar)
           .map(([name, social], index) => {
@@ -53,7 +56,7 @@ export default function Navbar() {
                     target={isExternal ? "_blank" : undefined}
                     rel={isExternal ? "noopener noreferrer" : undefined}
                   >
-                    <DockIcon className="rounded-3xl cursor-pointer size-full bg-background p-0 text-muted-foreground/80 hover:text-foreground hover:bg-muted backdrop-blur-3xl border border-border transition-colors shadow-[inset_0_0_5px_2px] shadow-primary/5">
+                    <DockIcon className="rounded-3xl cursor-pointer size-full bg-background p-0 text-muted-foreground hover:text-foreground hover:bg-muted backdrop-blur-3xl border border-border transition-colors">
                       <IconComponent className="size-full rounded-sm overflow-hidden object-contain" />
                     </DockIcon>
                   </a>
@@ -69,10 +72,13 @@ export default function Navbar() {
               </Tooltip>
             );
           })}
-        <Separator orientation="vertical" className="h-2/3 m-auto w-px bg-border" />
+        <Separator
+          orientation="vertical"
+          className="h-2/3 m-auto w-px bg-border"
+        />
         <Tooltip>
           <TooltipTrigger asChild>
-            <DockIcon className="rounded-3xl cursor-pointer size-full bg-background p-0 text-muted-foreground/80 hover:text-foreground hover:bg-muted backdrop-blur-3xl border border-border transition-colors shadow-[inset_0_0_5px_2px] shadow-primary/5">
+            <DockIcon className="rounded-3xl cursor-pointer size-full bg-background p-0 text-muted-foreground hover:text-foreground hover:bg-muted backdrop-blur-3xl border border-border transition-colors">
               <ModeToggle className="size-full cursor-pointer" />
             </DockIcon>
           </TooltipTrigger>
