@@ -129,6 +129,7 @@ export const DATA = {
                 }
             ],
             image: "https://tr.rbxcdn.com/180DAY-6a07a6f585bfa753acdf5fc43e1e5369/768/432/Image/Webp/noFilter",
+            video: "",
         },
         {
             title: "Heimdall",
