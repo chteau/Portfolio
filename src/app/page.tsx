@@ -11,6 +11,7 @@ import {
 import { Marquee } from "@/components/ui/marquee"
 import Link from "next/link";
 import Markdown from "react-markdown";
+import { Icons } from "@/components/icons";
 
 import ContactSection from "@/components/section/contact-section";
 import ProjectsSection from "@/components/section/projects-section";
@@ -25,11 +26,13 @@ const ReviewCard = ({
     name,
     body,
     img,
+    verified,
 }: {
     username: string;
     name: string;
     body: string;
     img?: string;
+    verified?: boolean;
 }) => {
     return (
         <figure
@@ -43,8 +46,13 @@ const ReviewCard = ({
                 <img className="rounded-full" width="32" height="32" alt="" src={img} />
 
                 <div className="flex flex-col">
-                <figcaption className="text-sm font-medium dark:text-white">
+                <figcaption className="text-sm font-medium dark:text-white flex flex-row items-center gap-1">
                     {name}
+                    {verified && (
+                        Icons.roblox_verified({
+                            className: "w-4 h-4"
+                        })
+                    )}
                 </figcaption>
                 <p className="text-xs font-medium dark:text-white/40">{username}</p>
                 </div>

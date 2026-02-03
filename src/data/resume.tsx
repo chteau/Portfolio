@@ -17,24 +17,28 @@ export const DATA = {
             username: "@Syveric",
             body: "Very nice! He scripts better and faster than me.",
             img: "https://tr.rbxcdn.com/30DAY-AvatarHeadshot-676D98F452E709EAABB18AB8365EF440-Png/420/420/AvatarHeadshot/Png/noFilter",
+            verified: true,
         },
         {
             name: "ShotgunRound",
             username: "@ShotgunRound",
             body: "Very Observant and can accept criticism and focuses on improvements.",
             img: "https://tr.rbxcdn.com/30DAY-AvatarHeadshot-07788BAC5520BEBC5C026DA8284CEAEA-Png/420/420/AvatarHeadshot/Png/noFilter",
+            verified: false,
         },
         {
             name: "Lexie",
             username: "@igotyour",
             body: "Works well with everyone - Is a good & fast pace scripter.",
             img: "https://tr.rbxcdn.com/30DAY-AvatarHeadshot-934F4CAC7DB7FDF2E304DA87D46D90E8-Png/420/420/AvatarHeadshot/Png/noFilter",
+            verified: true,
         },
         {
             name: "LazyBadDevs",
             username: "@LazyBadDevs",
-            body: "-",
+            body: "Pookie",
             img: "https://tr.rbxcdn.com/30DAY-AvatarHeadshot-7A3AE92CD52633A6BC2449748053F9E8-Png/420/420/AvatarHeadshot/Png/noFilter",
+            verified: true,
         }
     ],
     navbar: [
