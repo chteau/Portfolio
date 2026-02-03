@@ -95,9 +95,11 @@ export const DATA = {
                 },
             ],
             image: "https://roblox-supabase.vercel.app/banner.png",
+            video: "",
         },
         {
             title: "Archon Admin Panel",
+            href: "",
             dates: "2025",
             active: false,
             description:
@@ -107,6 +109,7 @@ export const DATA = {
                 "UI",
             ],
             links: [],
+            image: "",
             video: "/videos/ArchonDemo.mp4",
         },
         {
@@ -146,7 +149,8 @@ export const DATA = {
                     icon: <Icons.github className="size-3" />,
                 }
             ],
-            image: "https://opengraph.githubassets.com/e84107274f1ff72e93f9b1c0042e674188b19acf7c484c8f64dacb6f9eba4295/chteau/Heimdall"
+            image: "https://opengraph.githubassets.com/e84107274f1ff72e93f9b1c0042e674188b19acf7c484c8f64dacb6f9eba4295/chteau/Heimdall",
+            video: "",
         }
     ],
 } as const;
