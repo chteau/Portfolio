@@ -4,7 +4,7 @@ import { HomeIcon } from "lucide-react";
 export const DATA = {
     name: "Cheeteau",
     initials: "C.TEAU",
-    url: "https://github.com/chteau",
+    url: "https://cheeteau.vercel.app/",
     avatarUrl: "https://tr.rbxcdn.com/30DAY-AvatarHeadshot-46AFC8D276F10329C8F153E2B1A29EC6-Png/150/150/AvatarHeadshot/Webp/noFilter",
     location: "France, EU",
     description:
