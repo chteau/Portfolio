@@ -9,8 +9,7 @@ export const DATA = {
     location: "France, EU",
     description:
         "French full-stack developer and security guard. I absolutely love learning new frameworks and techniques as well as bringing projects to life.",
-    summary: `I've been interested in programming since 6th grade. Since then, I've built a wide range of projects—both as a freelancer and purely for fun.
-    Alongside development, I work as a security guard in a nightclub. I have hands-on experience in web development and Roblox game development.`,
+    summary: `My interest in programming dates back to sixth grade. Since then, I have built a wide range of projects, both as a freelancer and purely for personal interest. In addition to my role in development, I am employed as a security guard at a nightclub. I possess hands-on experience in web development and Roblox game development.`,
     reviews: [
         {
             name: "Viken",
@@ -97,50 +96,21 @@ export const DATA = {
                     href: "https://github.com/chteau/Roblox-Supabase",
                     icon: <Icons.github className="size-3" />,
                 },
+                {
+                    type: "Donate",
+                    href: "https://www.roblox.com/games/93084555973765/Roblox-Supabase-Donations",
+                    icon: <Icons.roblox className="size-3" />,
+                }
             ],
             image: "https://roblox-supabase.vercel.app/banner.png",
             video: "",
         },
-        {
-            title: "Archon Admin Panel",
-            href: "",
-            dates: "2025",
-            active: false,
-            description:
-                "An admin panel demo to experiment with responsive UI in Roblox. The project is sadly now inactive however. It did teach me a lot about UI however.",
-            technologies: [
-                "Luau",
-                "UI",
-            ],
-            links: [],
-            image: "",
-            video: "/videos/ArchonDemo.mp4",
-        },
-        {
-            title: "Night Shift: Observation Duty",
-            dates: "2024",
-            href: "https://www.roblox.com/games/16398007442/Night-Shift-Observation-Duty",
-            active: false,
-            description: "A Roblox game I made inspired by the game \"I'm on observation duty\". You're an employee of the “secure-view” company, responsible for monitoring various locations where anomalies have been spotted.",
-            technologies: [
-                "Luau",
-            ],
-            links: [
                 {
-                    type: "Play",
-                    href: "https://www.roblox.com/games/16398007442/Night-Shift-Observation-Duty",
-                    icon: <Icons.roblox className="size-3" />,
-                }
-            ],
-            image: "https://tr.rbxcdn.com/180DAY-6a07a6f585bfa753acdf5fc43e1e5369/768/432/Image/Webp/noFilter",
-            video: "",
-        },
-        {
             title: "Heimdall",
             dates: "2023 - 2024",
             href: "https://github.com/chteau/heimdall",
             active: false,
-            description: "Some kind of gatekeeping and server protection discord bot I work on when I have some time available.",
+            description: "A gatekeeping and self-hostable discord bot project I used to work on. Supports natively spam and phishing links detection as well as a cross-server verification process (background checks, etc).",
             technologies: [
                 "TypeScript",
                 "Deno",
@@ -154,8 +124,39 @@ export const DATA = {
                     icon: <Icons.github className="size-3" />,
                 }
             ],
-            image: "https://opengraph.githubassets.com/e84107274f1ff72e93f9b1c0042e674188b19acf7c484c8f64dacb6f9eba4295/chteau/Heimdall",
+            image: "/images/heimdall.png",
             video: "",
-        }
+        },
+    ],
+
+    // Role: 1 - Owner/Developer, 2 - Developer, 3 - Contributer
+    games: [
+        {
+            title: "Night Shift: Observation Duty",
+            universeID: 5652703661,
+            role: 1,
+            href: "https://www.roblox.com/games/16398007442/Night-Shift-Observation-Duty",
+            released: true,
+            description: "A Roblox game I made inspired by the game \"I'm on observation duty\". You're an employee of the “secure-view” company, responsible for monitoring various locations where anomalies have been spotted.",
+            image: "https://tr.rbxcdn.com/180DAY-6a07a6f585bfa753acdf5fc43e1e5369/768/432/Image/Webp/noFilter",
+        },
+        {
+            title: "Gravity Playground",
+            universeID: 4938416935,
+            role: 3,
+            href: "https://www.roblox.com/games/14280398854/Gravity-Playground",
+            released: true,
+            description: "A roblox game about running and playing around with gravity. Pretty simple concept but pretty fun apparently as it was the first game I worked on with 1M+ visits. It was my first ever experience on roblox.",
+            image: "https://tr.rbxcdn.com/180DAY-51141cd66e48b46b29cd8079589e63f1/768/432/Image/Webp/noFilter"
+        },
+        {
+            title: "[NEW] MARKED 🎯",
+            universeID: 9440522195,
+            role: 1,
+            href: "#",
+            released: false,
+            description: "I'm very proud of this one and I sure do hope this goes well. This game is inspired by Murder Mystery 2 but with a catch: the hunter can't see its preys. This also allows me to learn about react-luau.",
+            image: "https://tr.rbxcdn.com/180DAY-331428ec00fd5fb410c531686dba1d97/768/432/Image/Webp/noFilter",
+        },
     ],
 } as const;

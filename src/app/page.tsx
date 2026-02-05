@@ -3,21 +3,21 @@
 import { cn } from "@/lib/utils"
 import BlurFade from "@/components/magicui/blur-fade";
 import { TextAnimate } from "@/components/ui/text-animate";
+import { DotPattern } from "@/components/magicui/dot-pattern";
 import {
     AnimatedSpan,
     Terminal,
     TypingAnimation,
 } from "@/components/ui/terminal";
 import { Marquee } from "@/components/ui/marquee"
-import Link from "next/link";
-import Markdown from "react-markdown";
 import { Icons } from "@/components/icons";
 
 import ContactSection from "@/components/section/contact-section";
 import ProjectsSection from "@/components/section/projects-section";
-import { ArrowDown, ArrowUpRight } from "lucide-react";
+import { ArrowDown } from "lucide-react";
 import { DATA } from "@/data/resume";
 import { useRef } from "react";
+import GamesSection from "@/components/section/games-section";
 
 const BLUR_FADE_DELAY = 0.04;
 
@@ -38,8 +38,9 @@ const ReviewCard = ({
         <figure
             className={cn(
                 "relative h-full w-64 cursor-pointer overflow-hidden rounded-xl border p-4",
-                "border-gray-950/10 bg-gray-950/1 hover:bg-gray-950/5 transition-colors duration-100 ease-in-out",
-                "dark:border-gray-50/10 dark:bg-gray-50/10 dark:hover:bg-gray-50/15"
+                "border-gray-950/10 bg-linear-to-r from-gray-900/10 to-gray-600/10 hover:bg-gray-950/5 transition-colors duration-100 ease-in-out",
+                "dark:border-gray-50/10 dark:bg-gray-50/10 dark:hover:bg-gray-50/15",
+                "backdrop-blur-lg hover:-translate-y-2 transition-all duration-300 ease-in-out",
             )}
         >
             <div className="flex flex-row items-center gap-2">
@@ -75,7 +76,7 @@ export default function Page() {
                         Hello there!
                     </TextAnimate>
                     <BlurFade delay={BLUR_FADE_DELAY * 10} className="text-3xl" inView>
-                        <p className="opacity-50 font-300">
+                        <p className="opacity-30 font-300">
                             I'm {DATA.name}.
                         </p>
                     </BlurFade>
@@ -84,7 +85,7 @@ export default function Page() {
                         <Terminal className="w-full">
                             <TypingAnimation>admin@ch.teau:~$ run description</TypingAnimation>
 
-                            <AnimatedSpan className="text-blue-500 text-wrap">
+                            <AnimatedSpan className="text-red-400 text-wrap">
                                 {DATA.description}
                             </AnimatedSpan>
                         </Terminal>
@@ -105,14 +106,24 @@ export default function Page() {
                 </div>
             </section>
 
-            <section id="about" ref={aboutRef} className="px-15">
-                <h2 className="lg:text-6xl lg:text-left text-center text-4xl font-bold tracking-tighter ">About me</h2>
-                <p className="lg:text-2xl lg:text-left text-justify text-xl pt-5">
+            <section id="about" ref={aboutRef} className="px-15 relative h-[50vh] flex flex-col items-center justify-center">
+                <div className="absolute flex h-full w-full flex-col items-center justify-center overflow-hidden -z-10 opacity-40">
+                    <DotPattern
+                        className={cn(
+                            "mask-[radial-gradient(500px_circle_at_center,white,transparent)]"
+                        )}
+                    />
+                </div>
+
+                <TextAnimate animation="slideUp" by="character" className="lg:text-6xl lg:text-left text-center text-4xl font-bold tracking-tighter" once>
+                        About me
+                </TextAnimate>
+                <p className="lg:text-2xl lg:text-left text-justify text-xl pt-15">
                     {DATA.summary}
                 </p>
 
-                <div className="relative flex w-full flex-col items-center justify-center overflow-hidden pt-5">
-                    <Marquee pauseOnHover className="[--duration:20s]">
+                <div className="relative w-full flex-col items-center justify-center overflow-hidden pt-15 hidden lg:flex">
+                    <Marquee className="[--duration:40s]">
                         {DATA.reviews.map((review) => (
                             <ReviewCard key={review.username} {...review} />
                         ))}
@@ -126,8 +137,26 @@ export default function Page() {
                 className="h-px mx-50 bg-linear-to-r from-transparent via-border to-transparent"
             /> */}
 
-            <section id="projects" className="px-15 mt-20">
+            <section id="projects" className=" mt-20 relative">
+                <div className="absolute flex h-full w-full flex-col items-center justify-center overflow-hidden -z-10 opacity-40 top-5">
+                    <DotPattern
+                        className={cn(
+                            "mask-[radial-gradient(800px_circle_at_center,white,transparent)]"
+                        )}
+                    />
+                </div>
                 <ProjectsSection />
+            </section>
+
+            <section id="games" className="mt-20 relative">
+                <div className="absolute flex h-full w-full flex-col items-center justify-center overflow-hidden -z-10 opacity-40  top-5">
+                    <DotPattern
+                        className={cn(
+                            "mask-[radial-gradient(800px_circle_at_center,white,transparent)]"
+                        )}
+                    />
+                </div>
+                <GamesSection />
             </section>
 
             <section id="contact"  className="px-15 mt-20">

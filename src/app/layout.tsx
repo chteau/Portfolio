@@ -7,6 +7,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { LightRays } from "@/components/magicui/light-rays";
+import { IconCloud } from "@/components/ui/icon-cloud";
 
 const geist = Geist({
     subsets: ["latin"],
@@ -56,11 +57,35 @@ export const metadata: Metadata = {
     },
 };
 
+const slugs = [
+    "typescript",
+    "react",
+    "html5",
+    "css3",
+    "nodedotjs",
+    "nextdotjs",
+    "supabase",
+    "vercel",
+    "git",
+    "github",
+    "visualstudiocode",
+    "luau",
+    "lua",
+    "javascript",
+    "figma",
+    "roblox",
+    "discord"
+]
+
 export default function RootLayout({
     children,
 }: Readonly<{
     children: React.ReactNode;
 }>) {
+    const images = slugs.map(
+        (slug) => `https://cdn.simpleicons.org/${slug}/white`
+    )
+
     return (
         <html lang="en" suppressHydrationWarning>
             <body
@@ -73,7 +98,10 @@ export default function RootLayout({
                 <ThemeProvider attribute="class" defaultTheme="dark">
                     <TooltipProvider delayDuration={0}>
                         <div className="absolute inset-0 top-0 left-0 right-0 h-dvh overflow-hidden z-0">
-                            <LightRays />
+                            <LightRays color="rgba(165, 4, 29, 0.5)" length="50vh" />
+                            <div className="relative flex size-full items-center justify-center overflow-hidden">
+                                <IconCloud images={images} />
+                            </div>
                         </div>
                         <div className="relative z-10 mx-auto py-12 pb-24 sm:py-24 px-6">
                             {children}

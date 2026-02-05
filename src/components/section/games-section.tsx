@@ -1,10 +1,10 @@
-import { ProjectCard } from "@/components/project-card";
+import { GameCard } from "@/components/game-card";
 import { DATA } from "@/data/resume";
 import { Marquee } from "@/components/ui/marquee";
 
-export default function ProjectsSection() {
+export default function GamesSection() {
     return (
-        <section id="projects" className="w-full">
+        <section id="games">
             <div className="flex min-h-0 flex-col gap-y-8">
                 <div className="flex flex-col gap-y-4 items-center justify-center">
                     <div className="flex items-center w-full">
@@ -13,7 +13,7 @@ export default function ProjectsSection() {
 
                         />
                         <div className="border bg-primary z-10 rounded-xl px-4 py-1">
-                            <span className="text-background text-sm font-medium">My Projects</span>
+                            <span className="text-background text-sm font-medium">Games</span>
                         </div>
                         <div
                             className="flex-1 h-px bg-linear-to-l from-transparent from-5% via-border via-95% to-transparent"
@@ -21,26 +21,25 @@ export default function ProjectsSection() {
                         />
                     </div>
                     <div className="flex flex-col gap-y-3 items-center justify-center">
-                        <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl">Check out my latest work</h2>
+                        <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl">Games I have contributed on or made</h2>
                         <p className="text-muted-foreground md:text-lg/relaxed lg:text-base/relaxed xl:text-lg/relaxed text-balance text-center">
-                            Explore some of the projects I've worked on!
+                            Here's a selection of some games I worked on or even made.
                         </p>
                     </div>
                 </div>
                 <div className="sm:block hidden">
-                    <Marquee pauseOnHover className="[--duration:60s]" reverse repeat={3} >
-                        {DATA.projects.map((project, id) => (
-                            <ProjectCard
-                                href={project.href}
-                                key={project.title}
-                                title={project.title}
-                                description={project.description}
-                                dates={project.dates}
-                                tags={project.technologies}
-                                image={project.image}
-                                video={project.video}
-                                links={project.links}
+                    <Marquee pauseOnHover className="[--duration:60s]" repeat={3}>
+                        {DATA.games.map((game, id) => (
+                            <GameCard
+                                href={game.href}
+                                key={game.title}
+                                title={game.title}
+                                description={game.description}
+                                image={game.image}
+                                released={game.released}
+                                universeID={game.universeID}
                                 className="w-90"
+                                role={game.role}
                             />
                         ))}
                     </Marquee>
@@ -48,17 +47,17 @@ export default function ProjectsSection() {
                     <div className="from-background pointer-events-none absolute inset-y-0 right-0 w-1/4 bg-linear-to-l"></div>
                 </div>
                 <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 max-w-200 mx-auto auto-rows-fr sm:hidden">
-                    {DATA.projects.map((project, id) => (
-                        <ProjectCard
-                            href={project.href}
-                            key={project.title}
-                            title={project.title}
-                            description={project.description}
-                            dates={project.dates}
-                            tags={project.technologies}
-                            image={project.image}
-                            video={project.video}
-                            links={project.links}
+                    {DATA.games.map((game, id) => (
+                        <GameCard
+                            href={game.href}
+                            key={game.title}
+                            title={game.title}
+                            description={game.description}
+                            image={game.image}
+                            released={game.released}
+                            universeID={game.universeID}
+                            className="w-90"
+                            role={game.role}
                         />
                     ))}
                 </div>
