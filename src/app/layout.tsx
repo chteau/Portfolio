@@ -28,13 +28,29 @@ export const metadata: Metadata = {
         template: `%s | ${DATA.name}`,
     },
     description: DATA.description,
+    authors: [
+        {
+            name: "Cheeteau",
+            url: "https://github.com/chteau"
+        }
+    ],
+    creator: "Cheeteau",
+    publisher: "Cheeteau",
     openGraph: {
-        title: `${DATA.name}`,
+        title: `${DATA.name} 💻`,
         description: DATA.description,
         url: DATA.url,
         siteName: `${DATA.name}`,
         locale: "en_US",
         type: "website",
+        images: [
+            {
+                url: "/images/banner.png",
+                width: 1200,
+                height: 630,
+                alt: "My portfolio's banner ngl.",
+            },
+        ],
     },
     robots: {
         index: true,
@@ -48,8 +64,12 @@ export const metadata: Metadata = {
         },
     },
     twitter: {
-        title: `${DATA.name}`,
         card: "summary_large_image",
+                title: `${DATA.name} 💻`,
+        description: DATA.description,
+        images: ["/images/banner.png"],
+        creator: "@Cheeteau_",
+        site: "@Cheeteau_",
     },
     verification: {
         google: "",
