@@ -60,7 +60,7 @@ export function GameCard({
         },
         {
             id: 3,
-            name: "Contributer",
+            name: "Contributor",
         }
     ];
     const _role = roles.find((r) => r.id === role);

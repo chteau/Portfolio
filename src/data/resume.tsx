@@ -129,7 +129,7 @@ export const DATA = {
         },
     ],
 
-    // Role: 1 - Owner/Developer, 2 - Developer, 3 - Contributer
+    // Role: 1 - Owner/Developer, 2 - Developer, 3 - Contributor
     games: [
         {
             title: "Night Shift: Observation Duty",
