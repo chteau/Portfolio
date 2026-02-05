@@ -34,6 +34,11 @@ export const metadata: Metadata = {
             url: "https://github.com/chteau"
         }
     ],
+    icons: {
+        icon: "/favicon.ico",
+        apple: "/favicon.ico",
+        shortcut: "/favicon.ico",
+    },
     creator: "Cheeteau",
     publisher: "Cheeteau",
     openGraph: {
@@ -45,7 +50,7 @@ export const metadata: Metadata = {
         type: "website",
         images: [
             {
-                url: "/images/banner.png",
+                url: "https://cheeteau.vercel.app/images/banner.png",
                 width: 1200,
                 height: 630,
                 alt: "My portfolio's banner ngl.",
@@ -67,7 +72,7 @@ export const metadata: Metadata = {
         card: "summary_large_image",
                 title: `${DATA.name} 💻`,
         description: DATA.description,
-        images: ["/images/banner.png"],
+        images: ["https://cheeteau.vercel.app/images/banner.png"],
         creator: "@Cheeteau_",
         site: "@Cheeteau_",
     },
