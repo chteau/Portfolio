@@ -1,4 +1,4 @@
-import { GameCard } from "@/components/game-card";
+import { GameCard } from "@/components/custom/game-card";
 import { DATA } from "@/data/resume";
 import { Marquee } from "@/components/ui/marquee";
 

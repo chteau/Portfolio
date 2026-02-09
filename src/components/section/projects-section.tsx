@@ -1,4 +1,4 @@
-import { ProjectCard } from "@/components/project-card";
+import { ProjectCard } from "@/components/custom/project-card";
 import { DATA } from "@/data/resume";
 import { Marquee } from "@/components/ui/marquee";
 

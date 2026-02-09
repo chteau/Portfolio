@@ -1,11 +1,10 @@
-import { Icons } from "@/components/icons";
+import { Icons } from "@/components/custom/icons";
 import { HomeIcon } from "lucide-react";
 
 export const DATA = {
     name: "Cheeteau",
     initials: "C.TEAU",
     url: "https://cheeteau.vercel.app/",
-    avatarUrl: "https://tr.rbxcdn.com/30DAY-AvatarHeadshot-46AFC8D276F10329C8F153E2B1A29EC6-Png/150/150/AvatarHeadshot/Webp/noFilter",
     location: "France, EU",
     description:
         "French full-stack developer and security guard. I absolutely love learning new frameworks and techniques as well as bringing projects to life.",

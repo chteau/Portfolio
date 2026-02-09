@@ -8,7 +8,7 @@ import { ArrowUpRight } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
 import Markdown from "react-markdown";
-import { Icons } from "@/components/icons";
+import { Icons } from "@/components/custom/icons";
 import { id } from "zod/v4/locales";
 
 function GameImage({ src, alt }: { src: string; alt: string }) {

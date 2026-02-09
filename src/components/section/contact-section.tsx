@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { DATA } from "@/data/resume";
-import { Icons } from "@/components/icons";
+import { Icons } from "@/components/custom/icons";
 import { GridPattern } from "@/components/magicui/grid-pattern";
 import { cn } from "@/lib/utils";
 
