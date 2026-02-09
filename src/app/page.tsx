@@ -170,7 +170,7 @@ export default function Page() {
                                 </div>
                                 <div className="mt-2 text-2xl font-bold text-center">
                                     <CountUp
-                                        from={0}
+                                        from={totalContributedVisits - 4 * 1e6}
                                         to={totalContributedVisits}
                                         separator=","
                                         direction="up"
