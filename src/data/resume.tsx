@@ -149,13 +149,17 @@ export const DATA = {
             image: "https://tr.rbxcdn.com/180DAY-51141cd66e48b46b29cd8079589e63f1/768/432/Image/Webp/noFilter"
         },
         {
-            title: "[NEW] MARKED 🎯",
-            universeID: 9440522195,
-            role: 1,
-            href: "#",
-            released: false,
-            description: "I'm very proud of this one and I sure do hope this goes well. This game is inspired by Murder Mystery 2 but with a catch: the hunter can't see its preys. This also allows me to learn about react-luau.",
-            image: "https://tr.rbxcdn.com/180DAY-331428ec00fd5fb410c531686dba1d97/768/432/Image/Webp/noFilter",
-        },
+            title: "Pop Starz ⭐",
+            universeID: 7025744580,
+            role: 3,
+            href: "https://www.roblox.com/games/118770786913389/Pop-Starz",
+            released: true,
+            description: `Welcome to Pop Starz, step onto the red carpet and live the dream life!
+            🎬 Climb the fame ladder as a rising star
+            👠 Collect & wear the rarest clothing
+            🌃 Own luxury apartments
+            🛍️ Dress up & RP with your friends!`,
+            image: "https://tr.rbxcdn.com/180DAY-52b8f1875591f171737d9a37424aa0c4/768/432/Image/Webp/noFilter",
+        }
     ],
 } as const;
