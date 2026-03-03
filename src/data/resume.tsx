@@ -73,6 +73,31 @@ export const DATA = {
 
     projects: [
         {
+            title: "Fragment",
+            href: "https://chteau.github.io/Fragment/",
+            dates: "2026",
+            active: true,
+            description:
+                "Fragment is a simple module I made to manage Roblox's imperative UI instance system inspired by React. It currently supports state management, effects, declarative rendering, globals stores which allow you to build reactive user interfaces whilst still using default Roblox's UI components.",
+            technologies: [
+                "Luau",
+            ],
+            links: [
+                {
+                    type: "Website",
+                    href: "https://chteau.github.io/Fragment/",
+                    icon: <Icons.globe className="size-3" />,
+                },
+                {
+                    type: "Source",
+                    href: "https://github.com/chteau/Fragment",
+                    icon: <Icons.github className="size-3" />,
+                }
+            ],
+            image: "https://chteau.github.io/Fragment/banner.png",
+            video: "",
+        },
+        {
             title: "Roblox Supabase Client",
             href: "https://roblox-supabase.vercel.app/",
             dates: "2025 - 2026",
