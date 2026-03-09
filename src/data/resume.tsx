@@ -37,6 +37,13 @@ export const DATA = {
             body: "Pookie",
             img: "https://tr.rbxcdn.com/30DAY-AvatarHeadshot-7A3AE92CD52633A6BC2449748053F9E8-Png/420/420/AvatarHeadshot/Png/noFilter",
             verified: true,
+        },
+        {
+            name: "SERABEU",
+            username: "@SERABEU",
+            body: "Despite being extremely busy with his work, he does an excellent job. Always attentive, he even allows himself to be creative. He is truly passionate about what he does and knows what he is doing. I look forward to continuing the adventure with him.",
+            img: "https://tr.rbxcdn.com/30DAY-AvatarHeadshot-2AF3C3B08DDCD254DCFE06A56C5F3CB0-Png/150/150/AvatarHeadshot/Webp/noFilter",
+            verified: false,
         }
     ],
     navbar: [
