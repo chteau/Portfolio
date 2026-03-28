@@ -23,18 +23,20 @@ export async function GET(request: NextRequest) {
         const data: {
             data: {
                 id: number;
+                description: string;
                 visits: number;
                 playing: number;
                 favoritedCount: number;
             }[];
         } = await res.json();
 
-        const result: Record<string, { visits: number; playing: number; favorites: number }> = {};
+        const result: Record<string, { visits: number; playing: number; favorites: number; description: string }> = {};
         for (const game of data.data) {
             result[game.id.toString()] = {
                 visits: game.visits,
                 playing: game.playing,
                 favorites: game.favoritedCount,
+                description: game.description ?? "",
             };
         }
 

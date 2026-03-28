@@ -1,6 +1,19 @@
 import { Icons } from "@/components/custom/icons";
 import { HomeIcon } from "lucide-react";
 
+export type SkillId = "luau" | "webdev";
+
+export interface Skill {
+    id: SkillId;
+    icon: string;
+    proficiency: number;
+}
+
+export const SKILLS: Skill[] = [
+    { id: "luau", icon: "⚡", proficiency: 80 },
+    { id: "webdev", icon: "🌐", proficiency: 90 },
+];
+
 export const DATA = {
     name: "Cheeteau",
     initials: "C.TEAU",

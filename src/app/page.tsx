@@ -5,7 +5,7 @@ import { ArrowDown } from "lucide-react";
 import { DATA } from "@/data/resume";
 import { useEffect, useRef, useState } from "react";
 
-import { cn } from "@/lib/utils"
+import { cn } from "@/lib/utils";
 import BlurFade from "@/components/magicui/blur-fade";
 import { TextAnimate } from "@/components/ui/text-animate";
 import { DotPattern } from "@/components/magicui/dot-pattern";
@@ -14,40 +14,18 @@ import {
     Terminal,
     TypingAnimation,
 } from "@/components/ui/terminal";
-import { Marquee } from "@/components/ui/marquee"
+import { Marquee } from "@/components/ui/marquee";
 import { Icons } from "@/components/custom/icons";
 import CountUp from "@/components/ui/CountUp";
+import { useI18n } from "@/lib/i18n";
 
 import ContactSection from "@/components/section/contact-section";
 import ProjectsSection from "@/components/section/projects-section";
 import GamesSection from "@/components/section/games-section";
+import SkillsSection from "@/components/section/skills-section";
 
-/**
- * Delay constant for BlurFade animations in seconds.
- * @constant {number} BLUR_FADE_DELAY
- */
 const BLUR_FADE_DELAY = 0.04;
 
-/**
- * ReviewCard component displays a testimonial card with user information.
- * Used in the about section's marquee display of reviews.
- * @component
- * @param {Object} props - Component props
- * @param {string} props.username - Username/handle of the reviewer
- * @param {string} props.name - Display name of the reviewer
- * @param {string} props.body - Review text/content
- * @param {string} [props.img] - Optional profile image URL
- * @param {boolean} [props.verified] - Whether the reviewer is verified
- * @returns {JSX.Element} Review card element with user info and testimonial
- * @example
- * <ReviewCard
- *   username="john_doe"
- *   name="John Doe"
- *   body="Amazing work!"
- *   img="/avatar.jpg"
- *   verified={true}
- * />
- */
 const ReviewCard = ({
     username,
     name,
@@ -72,42 +50,25 @@ const ReviewCard = ({
         >
             <div className="flex flex-row items-center gap-2">
                 <img className="rounded-full" width="32" height="32" alt="" src={img} />
-
                 <div className="flex flex-col">
                     <figcaption className="text-sm font-medium dark:text-white flex flex-row items-center gap-1">
                         {name}
-                        {verified && (
-                            Icons.roblox_verified({
-                                className: "w-4 h-4"
-                            })
-                        )}
+                        {verified && Icons.roblox_verified({ className: "w-4 h-4" })}
                     </figcaption>
                     <p className="text-xs font-medium dark:text-white/40">{username}</p>
                 </div>
             </div>
             <blockquote className="mt-2 text-sm">{body}</blockquote>
         </figure>
-    )
-}
+    );
+};
 
-/**
- * Main portfolio page component displaying personal information, projects, games, and contact section.
- * Uses various animation components for visual effects and interactive elements.
- * @component
- * @returns {JSX.Element} Portfolio page with multiple sections
- * @example
- * <Page />
- */
 export default function Page() {
-    /**
-     * Reference to the about section for smooth scrolling navigation.
-     * @type {React.RefObject<HTMLElement>} aboutRef
-     */
+    const { t } = useI18n();
     const aboutRef = useRef<HTMLElement | null>(null);
     const [totalContributedVisits, setTotalContributedVisits] = useState(0);
     const [avatarUrls, setAvatarUrls] = useState<Record<string, string>>({});
 
-    // Loads contributed visits from API
     useEffect(() => {
         async function loadContributedVisits() {
             try {
@@ -118,11 +79,9 @@ export default function Page() {
                 console.error("Error loading contributed visits:", error);
             }
         }
-
         loadContributedVisits();
-    }, [ totalContributedVisits ]);
+    }, [totalContributedVisits]);
 
-    // Loads fresh Roblox avatar headshots
     useEffect(() => {
         async function loadAvatarUrls() {
             try {
@@ -135,7 +94,6 @@ export default function Page() {
                 console.error("Error loading avatar URLs:", error);
             }
         }
-
         loadAvatarUrls();
     }, []);
 
@@ -151,21 +109,20 @@ export default function Page() {
                         className="lg:text-8xl text-6xl text-center font-bold tracking-tighter"
                         once
                     >
-                        Hello there!
+                        {t("hero.greeting")}
                     </TextAnimate>
 
                     <BlurFade delay={BLUR_FADE_DELAY * 10} className="text-3xl" inView>
                         <p className="opacity-30 font-300">
-                            I'm {DATA.name}.
+                            {t("hero.iam")} {DATA.name}.
                         </p>
                     </BlurFade>
 
                     <BlurFade delay={BLUR_FADE_DELAY * 15} className="mt-5 w-full flex justify-center" inView>
                         <Terminal className="w-full">
-                            <TypingAnimation>admin@ch.teau:~$ run description</TypingAnimation>
-
+                            <TypingAnimation>{t("hero.terminalCommand")}</TypingAnimation>
                             <AnimatedSpan className="text-red-400 text-wrap">
-                                {DATA.description}
+                                {t("hero.description")}
                             </AnimatedSpan>
                         </Terminal>
                     </BlurFade>
@@ -182,17 +139,17 @@ export default function Page() {
                                 <div className="flex flex-row items-center gap-2">
                                     <div className="flex flex-col w-full">
                                         <span className="text-md text-muted-foreground font-medium text-center w-full">
-                                            Contributed Visits
+                                            {t("hero.contributedVisits")}
                                         </span>
                                     </div>
                                 </div>
                                 <div className="mt-2 text-2xl font-bold text-center">
                                     <CountUp
-                                        from={totalContributedVisits }
+                                        from={totalContributedVisits}
                                         to={totalContributedVisits}
                                         separator=","
                                         direction="up"
-                                        duration={.25}
+                                        duration={0.25}
                                     />
                                 </div>
                             </div>
@@ -202,11 +159,7 @@ export default function Page() {
                     <BlurFade delay={BLUR_FADE_DELAY * 25} className="mt-20 text-muted-foreground">
                         <button
                             className="cursor-pointer hover:translate-y-1 hover:opacity-50 transition-all duration-200"
-                            onClick={() => {
-                                aboutRef.current?.scrollIntoView({
-                                    behavior: "smooth",
-                                });
-                            }}
+                            onClick={() => aboutRef.current?.scrollIntoView({ behavior: "smooth" })}
                         >
                             <ArrowDown className="w-10 h-10" />
                         </button>
@@ -218,30 +171,36 @@ export default function Page() {
             <section
                 id="about"
                 ref={aboutRef}
-                className="px-15 relative h-[50vh] flex flex-col items-center justify-center"
+                className="px-15 relative py-20 flex flex-col items-center gap-8"
             >
                 <div className="absolute flex h-full w-full flex-col items-center justify-center overflow-hidden -z-10 opacity-40">
                     <DotPattern
-                        className={cn(
-                            "mask-[radial-gradient(500px_circle_at_center,white,transparent)]"
-                        )}
+                        className={cn("mask-[radial-gradient(500px_circle_at_center,white,transparent)]")}
                     />
                 </div>
 
-                <TextAnimate
-                    animation="slideUp"
-                    by="character"
-                    className="lg:text-6xl lg:text-left text-center text-4xl font-bold tracking-tighter"
-                    once
-                >
-                    About me
-                </TextAnimate>
+                <BlurFade inView>
+                    <TextAnimate
+                        animation="slideUp"
+                        by="character"
+                        className="lg:text-6xl lg:text-left text-center text-4xl font-bold tracking-tighter"
+                        once
+                    >
+                        {t("about.title")}
+                    </TextAnimate>
+                </BlurFade>
 
-                <p className="lg:text-2xl lg:text-left text-justify text-xl pt-15">
-                    {DATA.summary}
-                </p>
+                <BlurFade delay={BLUR_FADE_DELAY * 2} inView>
+                    <p className="lg:text-2xl lg:text-left text-justify text-xl">
+                        {t("about.summary")}
+                    </p>
+                </BlurFade>
 
-                <div className="relative w-full flex-col items-center justify-center overflow-hidden pt-15 hidden lg:flex">
+                <BlurFade delay={BLUR_FADE_DELAY * 4} inView className="w-full">
+                    <SkillsSection />
+                </BlurFade>
+
+                <BlurFade delay={BLUR_FADE_DELAY * 6} inView className="relative w-full hidden lg:block">
                     <Marquee className="[--duration:40s]">
                         {DATA.reviews.map((review) => (
                             <ReviewCard
@@ -253,16 +212,14 @@ export default function Page() {
                     </Marquee>
                     <div className="from-background pointer-events-none absolute inset-y-0 left-0 w-1/4 bg-linear-to-r"></div>
                     <div className="from-background pointer-events-none absolute inset-y-0 right-0 w-1/4 bg-linear-to-l"></div>
-                </div>
+                </BlurFade>
             </section>
 
             {/* Projects Section */}
             <section id="projects" className="mt-20 relative">
                 <div className="absolute flex h-full w-full flex-col items-center justify-center overflow-hidden -z-10 opacity-40 top-5">
                     <DotPattern
-                        className={cn(
-                            "mask-[radial-gradient(800px_circle_at_center,white,transparent)]"
-                        )}
+                        className={cn("mask-[radial-gradient(800px_circle_at_center,white,transparent)]")}
                     />
                 </div>
                 <ProjectsSection />
@@ -272,9 +229,7 @@ export default function Page() {
             <section id="games" className="mt-20 relative">
                 <div className="absolute flex h-full w-full flex-col items-center justify-center overflow-hidden -z-10 opacity-40 top-5">
                     <DotPattern
-                        className={cn(
-                            "mask-[radial-gradient(800px_circle_at_center,white,transparent)]"
-                        )}
+                        className={cn("mask-[radial-gradient(800px_circle_at_center,white,transparent)]")}
                     />
                 </div>
                 <GamesSection />

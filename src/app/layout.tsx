@@ -1,6 +1,8 @@
 import Navbar from "@/components/navbar";
 import { ThemeProvider } from "@/components/theme-provider";
 import { TooltipProvider } from "@/components/ui/tooltip";
+import { LanguageProvider } from "@/lib/i18n";
+import { LanguageSwitcher } from "@/components/custom/language-switcher";
 import { ProgressiveBlur } from "@/components/ui/progressive-blur";
 import { DATA } from "@/data/resume";
 import { cn } from "@/lib/utils";
@@ -123,6 +125,8 @@ export default function RootLayout({
             >
                 <ThemeProvider attribute="class" defaultTheme="dark">
                     <TooltipProvider delayDuration={0}>
+                    <LanguageProvider>
+                        <LanguageSwitcher />
                         <div className="absolute inset-0 top-0 left-0 right-0 h-dvh overflow-hidden z-0">
                             <LightRays color="rgba(165, 4, 29, 0.5)" length="50vh" />
                             <div className="relative flex size-full items-center justify-center overflow-hidden">
@@ -133,6 +137,7 @@ export default function RootLayout({
                             {children}
                         </div>
                         <Navbar />
+                    </LanguageProvider>
                     </TooltipProvider>
                     <ProgressiveBlur position="bottom" height="13%" className="fixed" />
                 </ThemeProvider>

@@ -2,13 +2,12 @@
 "use client";
 
 import { Badge } from "@/components/ui/badge";
-import { Lens } from "@/components/ui/lens";
 import { cn } from "@/lib/utils";
-import { Eye, Heart, Users } from "lucide-react";
+import { Eye, Heart } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
-import Markdown from "react-markdown";
 import { Icons } from "@/components/custom/icons";
+import { useI18n } from "@/lib/i18n";
 
 function GameImage({ src, alt }: { src: string; alt: string }) {
     const [loaded, setLoaded] = useState(false);
@@ -40,6 +39,7 @@ interface GameStats {
     visits: number;
     playing: number;
     favorites: number;
+    description: string;
 }
 
 function formatCount(n: number): string {
@@ -72,19 +72,12 @@ export function GameCard({
     role,
     stats,
 }: Props) {
+    const { t } = useI18n();
+
     const roles = [
-        {
-            id: 1,
-            name: "Owner/Developer",
-        },
-        {
-            id: 2,
-            name: "Developer",
-        },
-        {
-            id: 3,
-            name: "Contributor",
-        }
+        { id: 1, name: "Owner/Developer" },
+        { id: 2, name: "Developer" },
+        { id: 3, name: "Contributor" },
     ];
     const _role = roles.find((r) => r.id === role);
 
@@ -98,38 +91,30 @@ export function GameCard({
         >
             {!released && (
                 <div className="absolute group bg-linear-to-t from-neutral-900 to-slate-900/30 top-0 left-0 w-full h-full flex flex-col items-center justify-end z-50">
-                    <p className="pb-0 text-muted-foreground text-lg opacity-0 group-hover:pb-10 group-hover:opacity-100 transition-all duration-400 ease-in-out">This game isn't released yet!</p>
+                    <p className="pb-0 text-muted-foreground text-lg opacity-0 group-hover:pb-10 group-hover:opacity-100 transition-all duration-400 ease-in-out">
+                        {t("games.notReleased")}
+                    </p>
                 </div>
             )}
 
             <div className="relative shrink-0">
                 {href ? (
-                    <Link
-                        href={href}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="block"
-                    >
+                    <Link href={href} target="_blank" rel="noopener noreferrer" className="block">
                         <GameImage src={image} alt={title} />
                     </Link>
                 ) : (
                     <div className="w-full h-48 bg-muted" />
                 )}
-
                 <div className="absolute top-2 right-2 flex flex-wrap gap-2 z-10">
-                    <Badge className={cn(
-                        "flex items-center gap-1.5 text-xs bg-black text-white cursor-default hover:bg-black"
-                    )}>
+                    <Badge className="flex items-center gap-1.5 text-xs bg-black text-white cursor-default hover:bg-black">
                         {_role?.name}
                     </Badge>
                 </div>
             </div>
+
             <div className="p-6 flex flex-col gap-3 flex-1">
-                <div className="flex items-start justify-between gap-2">
-                    <div className="flex flex-col gap-1">
-                        <h3 className="font-semibold">{title}</h3>
-                    </div>
-                </div>
+                <h3 className="font-semibold">{title}</h3>
+
                 {stats && (
                     <div className="flex items-center gap-2 flex-wrap">
                         <span className="flex items-center gap-1.5 rounded-full bg-green-500/10 border border-green-500/20 px-2 py-0.5 text-xs font-medium text-green-400">
@@ -149,17 +134,20 @@ export function GameCard({
                         </span>
                     </div>
                 )}
-                <div className="text-xs flex-1 prose max-w-full text-pretty font-sans leading-relaxed text-muted-foreground dark:prose-invert">
-                    <Markdown>{description}</Markdown>
-                </div>
 
-                <Link href={href} target="_blank" rel="noopener noreferrer" className="pt-10">
-                    <button className={cn(
-                        "w-full p-3 cursor-pointer bg-gray-500 rounded-sm hover:opacity-70 transition-all duration-100 ease-in-out",
-                        !released && "opacity-70 cursor-not-allowed grayscale-50",
-                        "flex items-center justify-center gap-2"
-                    )}>
-                        Play on Roblox <Icons.roblox className="size-4" />
+                <p className="text-xs font-sans text-muted-foreground line-clamp-2">
+                    {description}
+                </p>
+
+                <Link href={href} target="_blank" rel="noopener noreferrer" className="mt-auto">
+                    <button
+                        className={cn(
+                            "w-full p-3 cursor-pointer bg-gray-500 rounded-sm hover:opacity-70 transition-all duration-100 ease-in-out",
+                            !released && "opacity-70 cursor-not-allowed grayscale-50",
+                            "flex items-center justify-center gap-2"
+                        )}
+                    >
+                        {t("games.playButton")} <Icons.roblox className="size-4" />
                     </button>
                 </Link>
             </div>
