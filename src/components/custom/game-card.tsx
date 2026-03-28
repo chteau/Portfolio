@@ -12,19 +12,28 @@ import { Icons } from "@/components/custom/icons";
 import { id } from "zod/v4/locales";
 
 function GameImage({ src, alt }: { src: string; alt: string }) {
-    const [imageError, setImageError] = useState(false);
+    const [loaded, setLoaded] = useState(false);
+    const [error, setError] = useState(false);
 
-    if (!src || imageError) {
+    if (!src || error) {
         return <div className="w-full h-48 bg-muted" />;
     }
 
     return (
-        <img
-            src={src}
-            alt={alt}
-            className="w-full h-48 object-cover"
-            onError={() => setImageError(true)}
-        />
+        <div className="relative w-full h-48">
+            {!loaded && <div className="absolute inset-0 bg-muted animate-pulse" />}
+            <img
+                src={src}
+                alt={alt}
+                loading="lazy"
+                className={cn(
+                    "w-full h-48 object-cover transition-opacity duration-500",
+                    loaded ? "opacity-100" : "opacity-0"
+                )}
+                onLoad={() => setLoaded(true)}
+                onError={() => setError(true)}
+            />
+        </div>
     );
 }
 

@@ -105,6 +105,7 @@ export default function Page() {
      */
     const aboutRef = useRef<HTMLElement | null>(null);
     const [totalContributedVisits, setTotalContributedVisits] = useState(0);
+    const [avatarUrls, setAvatarUrls] = useState<Record<string, string>>({});
 
     // Loads contributed visits from API
     useEffect(() => {
@@ -120,6 +121,23 @@ export default function Page() {
 
         loadContributedVisits();
     }, [ totalContributedVisits ]);
+
+    // Loads fresh Roblox avatar headshots
+    useEffect(() => {
+        async function loadAvatarUrls() {
+            try {
+                const userIds = DATA.reviews.map((r) => r.userId).filter((id) => id > 0).join(",");
+                if (!userIds) return;
+                const response = await fetch(`/api/roblox/avatars?userIds=${userIds}`);
+                const data = await response.json();
+                setAvatarUrls(data.data ?? {});
+            } catch (error) {
+                console.error("Error loading avatar URLs:", error);
+            }
+        }
+
+        loadAvatarUrls();
+    }, []);
 
     return (
         <main className="min-h-dvh flex flex-col gap-14 relative">
@@ -226,7 +244,11 @@ export default function Page() {
                 <div className="relative w-full flex-col items-center justify-center overflow-hidden pt-15 hidden lg:flex">
                     <Marquee className="[--duration:40s]">
                         {DATA.reviews.map((review) => (
-                            <ReviewCard key={review.username} {...review} />
+                            <ReviewCard
+                                key={review.username}
+                                {...review}
+                                img={avatarUrls[review.userId.toString()]}
+                            />
                         ))}
                     </Marquee>
                     <div className="from-background pointer-events-none absolute inset-y-0 left-0 w-1/4 bg-linear-to-r"></div>

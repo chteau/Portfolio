@@ -29,17 +29,31 @@ export default function ContactSection() {
                     Wanna talk and perhaps work together? Shoot me a dm and I'll respond as fast as I can. The best way to contact me is through <b>Discord</b>.
                 </p>
 
-                <Link
-                    href={DATA.contact.social.Discord.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-                    <button
-                        className="cursor-pointer hover:opacity-50 transition-all duration-200"
+                <div className="flex gap-5 mt-3 flex-col lg:flex-row">
+                    <Link
+                        href={DATA.contact.social.Discord.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
                     >
-                        {Icons.discord({ className: "w-10 h-10" })}
-                    </button>
-                </Link>
+                        <button
+                            className="cursor-pointer hover:opacity-50 transition-all duration-200"
+                        >
+                            {Icons.discord({ className: "w-10 h-10" })}
+                        </button>
+                    </Link>
+
+                    <Link
+                        href={DATA.contact.social.Roblox.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        <button
+                            className="cursor-pointer hover:opacity-50 transition-all duration-200"
+                        >
+                            {Icons.roblox({ className: "w-10 h-10" })}
+                        </button>
+                    </Link>
+                </div>
             </div>
         </div>
     );

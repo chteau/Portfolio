@@ -13,36 +13,36 @@ export const DATA = {
         {
             name: "Viken",
             username: "@Syveric",
+            userId: 105519417,
             body: "Very nice! He scripts better and faster than me.",
-            img: "https://tr.rbxcdn.com/30DAY-AvatarHeadshot-676D98F452E709EAABB18AB8365EF440-Png/420/420/AvatarHeadshot/Png/noFilter",
             verified: true,
         },
         {
             name: "ShotgunRound",
             username: "@ShotgunRound",
+            userId: 5647093294,
             body: "Very Observant and can accept criticism and focuses on improvements.",
-            img: "https://tr.rbxcdn.com/30DAY-AvatarHeadshot-07788BAC5520BEBC5C026DA8284CEAEA-Png/420/420/AvatarHeadshot/Png/noFilter",
             verified: false,
         },
         {
             name: "Lexie",
             username: "@igotyour",
+            userId: 70693779,
             body: "Works well with everyone - Is a good & fast pace scripter.",
-            img: "https://tr.rbxcdn.com/30DAY-AvatarHeadshot-934F4CAC7DB7FDF2E304DA87D46D90E8-Png/420/420/AvatarHeadshot/Png/noFilter",
             verified: true,
         },
         {
             name: "LazyBadDevs",
             username: "@LazyBadDevs",
+            userId: 4337879873,
             body: "Pookie",
-            img: "https://tr.rbxcdn.com/30DAY-AvatarHeadshot-7A3AE92CD52633A6BC2449748053F9E8-Png/420/420/AvatarHeadshot/Png/noFilter",
             verified: true,
         },
         {
             name: "SERABEU",
             username: "@SERABEU",
-            body: "Despite being extremely busy with his work, he does an excellent job. Always attentive, he even allows himself to be creative. He is truly passionate about what he does and knows what he is doing. I look forward to continuing the adventure with him.",
-            img: "https://tr.rbxcdn.com/30DAY-AvatarHeadshot-2AF3C3B08DDCD254DCFE06A56C5F3CB0-Png/150/150/AvatarHeadshot/Webp/noFilter",
+            userId: 5208557083,
+            body: "Always attentive, he even allows himself to be creative. He is truly passionate about what he does.",
             verified: false,
         }
     ],
@@ -169,7 +169,6 @@ export const DATA = {
             href: "https://www.roblox.com/games/16398007442/Night-Shift-Observation-Duty",
             released: true,
             description: "A Roblox game I made inspired by the game \"I'm on observation duty\". You're an employee of the “secure-view” company, responsible for monitoring various locations where anomalies have been spotted.",
-            image: "https://tr.rbxcdn.com/180DAY-6a07a6f585bfa753acdf5fc43e1e5369/768/432/Image/Webp/noFilter",
         },
         {
             title: "Gravity Playground",
@@ -178,7 +177,6 @@ export const DATA = {
             href: "https://www.roblox.com/games/14280398854/Gravity-Playground",
             released: true,
             description: "A roblox game about running and playing around with gravity. Pretty simple concept but pretty fun apparently as it was the first game I worked on with 1M+ visits. It was my first ever experience on roblox.",
-            image: "https://tr.rbxcdn.com/180DAY-51141cd66e48b46b29cd8079589e63f1/768/432/Image/Webp/noFilter"
         },
         {
             title: "Pop Starz ⭐",
@@ -191,7 +189,19 @@ export const DATA = {
             👠 Collect & wear the rarest clothing
             🌃 Own luxury apartments
             🛍️ Dress up & RP with your friends!`,
-            image: "https://tr.rbxcdn.com/180DAY-52b8f1875591f171737d9a37424aa0c4/768/432/Image/Webp/noFilter",
+        },
+        {
+            title: "Ascension Incremental",
+            universeID: 9668694532,
+            role: 2,
+            href: "https://www.roblox.com/games/98388247482875/Ascension-Incremental",
+            released: true,
+            description: `💎 Welcome to Ascension Incremental
+            💰 Gain Points Per Second
+            ⬆️ Buy Upgrades.
+            ⭐ Reach Highest Ascension
+            🔮 Roll Runes To Boost All Your Stats!
+            🏆 Climb The Leaderboards And Get To #1`,
         }
     ],
 } as const;

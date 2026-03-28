@@ -1,8 +1,27 @@
+"use client";
+
 import { GameCard } from "@/components/custom/game-card";
 import { DATA } from "@/data/resume";
 import { Marquee } from "@/components/ui/marquee";
+import { useEffect, useState } from "react";
 
 export default function GamesSection() {
+    const [thumbnailUrls, setThumbnailUrls] = useState<Record<string, string>>({});
+
+    useEffect(() => {
+        async function loadThumbnailUrls() {
+            try {
+                const universeIds = DATA.games.map((g) => g.universeID).join(",");
+                const response = await fetch(`/api/roblox/thumbnails?universeIds=${universeIds}`);
+                const data = await response.json();
+                setThumbnailUrls(data.data ?? {});
+            } catch (error) {
+                console.error("Error loading game thumbnails:", error);
+            }
+        }
+
+        loadThumbnailUrls();
+    }, []);
     return (
         <section id="games">
             <div className="flex min-h-0 flex-col gap-y-8">
@@ -35,7 +54,7 @@ export default function GamesSection() {
                                 key={game.title}
                                 title={game.title}
                                 description={game.description}
-                                image={game.image}
+                                image={thumbnailUrls[game.universeID.toString()]}
                                 released={game.released}
                                 universeID={game.universeID}
                                 className="w-90"
@@ -53,7 +72,7 @@ export default function GamesSection() {
                             key={game.title}
                             title={game.title}
                             description={game.description}
-                            image={game.image}
+                            image={thumbnailUrls[game.universeID.toString()]}
                             released={game.released}
                             universeID={game.universeID}
                             className="w-90"
