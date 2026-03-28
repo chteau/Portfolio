@@ -5,23 +5,30 @@ import { DATA } from "@/data/resume";
 import { Marquee } from "@/components/ui/marquee";
 import { useEffect, useState } from "react";
 
+interface GameStats {
+    visits: number;
+    playing: number;
+    favorites: number;
+}
+
 export default function GamesSection() {
     const [thumbnailUrls, setThumbnailUrls] = useState<Record<string, string>>({});
+    const [gameStats, setGameStats] = useState<Record<string, GameStats>>({});
 
     useEffect(() => {
-        async function loadThumbnailUrls() {
-            try {
-                const universeIds = DATA.games.map((g) => g.universeID).join(",");
-                const response = await fetch(`/api/roblox/thumbnails?universeIds=${universeIds}`);
-                const data = await response.json();
-                setThumbnailUrls(data.data ?? {});
-            } catch (error) {
-                console.error("Error loading game thumbnails:", error);
-            }
+        async function loadGameData() {
+            const universeIds = DATA.games.map((g) => g.universeID).join(",");
+            const [thumbnailsRes, statsRes] = await Promise.allSettled([
+                fetch(`/api/roblox/thumbnails?universeIds=${universeIds}`).then((r) => r.json()),
+                fetch(`/api/roblox/gamestats?universeIds=${universeIds}`).then((r) => r.json()),
+            ]);
+            if (thumbnailsRes.status === "fulfilled") setThumbnailUrls(thumbnailsRes.value.data ?? {});
+            if (statsRes.status === "fulfilled") setGameStats(statsRes.value.data ?? {});
         }
 
-        loadThumbnailUrls();
+        loadGameData();
     }, []);
+
     return (
         <section id="games">
             <div className="flex min-h-0 flex-col gap-y-8">
@@ -48,7 +55,7 @@ export default function GamesSection() {
                 </div>
                 <div className="sm:block hidden">
                     <Marquee pauseOnHover className="[--duration:60s]" repeat={3}>
-                        {DATA.games.map((game, id) => (
+                        {DATA.games.map((game) => (
                             <GameCard
                                 href={game.href}
                                 key={game.title}
@@ -59,6 +66,7 @@ export default function GamesSection() {
                                 universeID={game.universeID}
                                 className="w-90"
                                 role={game.role}
+                                stats={gameStats[game.universeID.toString()]}
                             />
                         ))}
                     </Marquee>
@@ -66,7 +74,7 @@ export default function GamesSection() {
                     <div className="from-background pointer-events-none absolute inset-y-0 right-0 w-1/4 bg-linear-to-l"></div>
                 </div>
                 <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 max-w-200 mx-auto auto-rows-fr sm:hidden">
-                    {DATA.games.map((game, id) => (
+                    {DATA.games.map((game) => (
                         <GameCard
                             href={game.href}
                             key={game.title}
@@ -77,6 +85,7 @@ export default function GamesSection() {
                             universeID={game.universeID}
                             className="w-90"
                             role={game.role}
+                            stats={gameStats[game.universeID.toString()]}
                         />
                     ))}
                 </div>
@@ -84,4 +93,3 @@ export default function GamesSection() {
         </section>
     );
 }
-

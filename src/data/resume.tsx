@@ -162,21 +162,36 @@ export const DATA = {
 
     // Role: 1 - Owner/Developer, 2 - Developer, 3 - Contributor
     games: [
+        // {
+        //     title: "Night Shift: Observation Duty",
+        //     universeID: 5652703661,
+        //     role: 1,
+        //     href: "https://www.roblox.com/games/16398007442/Night-Shift-Observation-Duty",
+        //     released: true,
+        //     description: "A Roblox game I made inspired by the game \"I'm on observation duty\". You're an employee of the “secure-view” company, responsible for monitoring various locations where anomalies have been spotted.",
+        // },
+        // {
+        //     title: "Gravity Playground",
+        //     universeID: 4938416935,
+        //     role: 3,
+        //     href: "https://www.roblox.com/games/14280398854/Gravity-Playground",
+        //     released: true,
+        //     description: "A roblox game about running and playing around with gravity. Pretty simple concept but pretty fun apparently as it was the first game I worked on with 1M+ visits. It was my first ever experience on roblox.",
+        // },
         {
-            title: "Night Shift: Observation Duty",
-            universeID: 5652703661,
-            role: 1,
-            href: "https://www.roblox.com/games/16398007442/Night-Shift-Observation-Duty",
-            released: true,
-            description: "A Roblox game I made inspired by the game \"I'm on observation duty\". You're an employee of the “secure-view” company, responsible for monitoring various locations where anomalies have been spotted.",
-        },
-        {
-            title: "Gravity Playground",
-            universeID: 4938416935,
+            title: "Crushed by Speeding Wall For Brainrots",
+            universeID: 9583687222,
             role: 3,
-            href: "https://www.roblox.com/games/14280398854/Gravity-Playground",
+            href: "https://www.roblox.com/games/101354784559824/Crushed-by-Speeding-Wall-For-Brainrots",
             released: true,
-            description: "A roblox game about running and playing around with gravity. Pretty simple concept but pretty fun apparently as it was the first game I worked on with 1M+ visits. It was my first ever experience on roblox.",
+            description: `😡 Crushed by Speeding Wall For Brainrots
+            How to play:
+            - Crushed by Speeding Wall For Brainrots 😡
+            - Collect brainrots, farther to go means better luck! ✨
+            - Earn Cash from your Brainrots! 💰
+            - Upgrade your speed to run faster! ⚡
+            - Rebirth to increase your multiplier and unlock Boots! ♻️
+            - Unlock and Equip new boots to increase your speed! 👟`,
         },
         {
             title: "Pop Starz ⭐",

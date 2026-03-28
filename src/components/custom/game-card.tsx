@@ -4,12 +4,11 @@
 import { Badge } from "@/components/ui/badge";
 import { Lens } from "@/components/ui/lens";
 import { cn } from "@/lib/utils";
-import { ArrowUpRight } from "lucide-react";
+import { Eye, Heart, Users } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
 import Markdown from "react-markdown";
 import { Icons } from "@/components/custom/icons";
-import { id } from "zod/v4/locales";
 
 function GameImage({ src, alt }: { src: string; alt: string }) {
     const [loaded, setLoaded] = useState(false);
@@ -37,6 +36,19 @@ function GameImage({ src, alt }: { src: string; alt: string }) {
     );
 }
 
+interface GameStats {
+    visits: number;
+    playing: number;
+    favorites: number;
+}
+
+function formatCount(n: number): string {
+    if (n >= 1_000_000_000) return `${(n / 1_000_000_000).toFixed(1)}B`;
+    if (n >= 1_000_000) return `${(n / 1_000_000).toFixed(1)}M`;
+    if (n >= 1_000) return `${(n / 1_000).toFixed(1)}K`;
+    return n.toString();
+}
+
 interface Props {
     title: string;
     universeID: number;
@@ -46,6 +58,7 @@ interface Props {
     image: string;
     className?: string;
     role: number;
+    stats?: GameStats;
 }
 
 export function GameCard({
@@ -57,6 +70,7 @@ export function GameCard({
     image,
     className,
     role,
+    stats,
 }: Props) {
     const roles = [
         {
@@ -116,6 +130,25 @@ export function GameCard({
                         <h3 className="font-semibold">{title}</h3>
                     </div>
                 </div>
+                {stats && (
+                    <div className="flex items-center gap-2 flex-wrap">
+                        <span className="flex items-center gap-1.5 rounded-full bg-green-500/10 border border-green-500/20 px-2 py-0.5 text-xs font-medium text-green-400">
+                            <span className="relative flex size-1.5">
+                                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-400 opacity-75" />
+                                <span className="relative inline-flex size-1.5 rounded-full bg-green-500" />
+                            </span>
+                            {formatCount(stats.playing)} playing
+                        </span>
+                        <span className="flex items-center gap-1 text-xs text-muted-foreground">
+                            <Eye className="size-3" />
+                            {formatCount(stats.visits)}
+                        </span>
+                        <span className="flex items-center gap-1 text-xs text-muted-foreground">
+                            <Heart className="size-3" />
+                            {formatCount(stats.favorites)}
+                        </span>
+                    </div>
+                )}
                 <div className="text-xs flex-1 prose max-w-full text-pretty font-sans leading-relaxed text-muted-foreground dark:prose-invert">
                     <Markdown>{description}</Markdown>
                 </div>
