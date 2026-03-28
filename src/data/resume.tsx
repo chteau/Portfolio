@@ -217,19 +217,6 @@ export const DATA = {
             👠 Collect & wear the rarest clothing
             🌃 Own luxury apartments
             🛍️ Dress up & RP with your friends!`,
-        },
-        {
-            title: "Ascension Incremental",
-            universeID: 9668694532,
-            role: 2,
-            href: "https://www.roblox.com/games/98388247482875/Ascension-Incremental",
-            released: true,
-            description: `💎 Welcome to Ascension Incremental
-            💰 Gain Points Per Second
-            ⬆️ Buy Upgrades.
-            ⭐ Reach Highest Ascension
-            🔮 Roll Runes To Boost All Your Stats!
-            🏆 Climb The Leaderboards And Get To #1`,
         }
     ],
 } as const;
