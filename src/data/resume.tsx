@@ -192,6 +192,20 @@ export const DATA = {
         //     description: "A roblox game about running and playing around with gravity. Pretty simple concept but pretty fun apparently as it was the first game I worked on with 1M+ visits. It was my first ever experience on roblox.",
         // },
         {
+            title: "Ascension Incremental",
+            universeID: 9668694532,
+            role: 3,
+            href: "https://www.roblox.com/games/98388247482875/Ascension-Incremental",
+            released: true,
+            description: `💎 Welcome to Ascension Incremental
+            💰 Gain Points Per Second
+            ⬆️ Buy Upgrades.
+            ⭐ Reach Highest Ascension
+            🔮 Roll Runes To Boost All Your Stats!
+            🏆 Climb The Leaderboards And Get To #1
+            👍 Like and Favourite the game to support development!`,
+        },
+        {
             title: "Crushed by Speeding Wall For Brainrots",
             universeID: 9583687222,
             role: 3,
