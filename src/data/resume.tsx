@@ -44,7 +44,7 @@ export const DATA = {
         {
             year: "2015",
             title: "Web Development",
-            description: "Dived deep into full-stack web development, mastering PHP, JavaScript, TypeScript, React and Next.js.",
+            description: "Dived deep into full-stack web development, mastering PHP, JavaScript, TypeScript, React and later on Next.js and Vue.",
         },
         {
             year: "2022",
