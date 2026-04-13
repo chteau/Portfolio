@@ -9,6 +9,9 @@ export type Translations = {
     about: {
         title: string;
         summary: string;
+        journeyHeading: string;
+        skillsHeading: string;
+        whatIDoHeading: string;
     };
     skills: {
         heading: string;
@@ -48,6 +51,9 @@ export const en: Translations = {
     about: {
         title: "About me",
         summary: "My interest in programming dates back to sixth grade. Since then, I have built a wide range of projects, both as a freelancer and purely for personal interest. In addition to my role in development, I am employed as a security guard at a nightclub. I possess hands-on experience in web development and Roblox game development.",
+        journeyHeading: "My Journey",
+        skillsHeading: "Skills & Expertise",
+        whatIDoHeading: "What I Do",
     },
     skills: {
         heading: "Skill Tree",

@@ -2,7 +2,7 @@
 
 /* eslint-disable @next/next/no-img-element */
 import { ArrowDown } from "lucide-react";
-import { DATA } from "@/data/resume";
+import { DATA, SKILL_TAGS } from "@/data/resume";
 import { useEffect, useRef, useState } from "react";
 
 import { cn } from "@/lib/utils";
@@ -22,7 +22,6 @@ import { useI18n } from "@/lib/i18n";
 import ContactSection from "@/components/section/contact-section";
 import ProjectsSection from "@/components/section/projects-section";
 import GamesSection from "@/components/section/games-section";
-import SkillsSection from "@/components/section/skills-section";
 
 const BLUR_FADE_DELAY = 0.04;
 
@@ -171,7 +170,7 @@ export default function Page() {
             <section
                 id="about"
                 ref={aboutRef}
-                className="px-15 relative py-20 flex flex-col items-center gap-8"
+                className="lg:px-15 px-5 relative py-20 flex flex-col items-center gap-12"
             >
                 <div className="absolute flex h-full w-full flex-col items-center justify-center overflow-hidden -z-10 opacity-40">
                     <DotPattern
@@ -179,25 +178,88 @@ export default function Page() {
                     />
                 </div>
 
-                <BlurFade inView>
-                    <TextAnimate
-                        animation="slideUp"
-                        by="character"
-                        className="lg:text-6xl lg:text-left text-center text-4xl font-bold tracking-tighter"
-                        once
-                    >
-                        {t("about.title")}
-                    </TextAnimate>
-                </BlurFade>
+                <div className="w-full flex flex-col items-center gap-4">
+                    <BlurFade inView>
+                        <TextAnimate
+                            animation="slideUp"
+                            by="character"
+                            className="lg:text-6xl text-4xl font-bold tracking-tighter text-center"
+                            once
+                        >
+                            {t("about.title")}
+                        </TextAnimate>
+                    </BlurFade>
 
-                <BlurFade delay={BLUR_FADE_DELAY * 2} inView>
-                    <p className="lg:text-2xl lg:text-left text-justify text-xl">
-                        {t("about.summary")}
-                    </p>
-                </BlurFade>
+                    <BlurFade delay={BLUR_FADE_DELAY * 2} inView>
+                        <p className="text-center text-muted-foreground text-lg max-w-2xl">
+                            {t("about.summary")}
+                        </p>
+                    </BlurFade>
+                </div>
 
                 <BlurFade delay={BLUR_FADE_DELAY * 4} inView className="w-full">
-                    <SkillsSection />
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                        {/* Left: My Journey */}
+                        <div className="border border-border rounded-2xl p-6 bg-card/40 backdrop-blur-sm">
+                            <h2 className="text-2xl font-bold mb-6">{t("about.journeyHeading")}</h2>
+                            <div className="relative">
+                                <div className="absolute left-1.75 top-0 bottom-0 w-0.5 bg-border" />
+                                <div className="flex flex-col gap-6">
+                                    {DATA.journey.map((item, i) => (
+                                        <div key={i} className="flex gap-4 pl-8 relative">
+                                            <div className="absolute left-0 top-1 w-3.5 h-3.5 rounded-full border-2 border-primary bg-background" />
+                                            <div>
+                                                <div className="flex items-center gap-2 mb-1">
+                                                    <span className="text-xs font-mono text-muted-foreground bg-muted px-2 py-0.5 rounded">
+                                                        {item.year}
+                                                    </span>
+                                                    <h3 className="font-semibold text-sm">{item.title}</h3>
+                                                </div>
+                                                <p className="text-sm text-muted-foreground">{item.description}</p>
+                                            </div>
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
+                        </div>
+
+                        {/* Right: Skills & What I Do */}
+                        <div className="flex flex-col gap-6">
+                            <div className="border border-border rounded-2xl p-6 bg-card/40 backdrop-blur-sm">
+                                <h2 className="text-2xl font-bold mb-4">{t("about.skillsHeading")}</h2>
+                                <div className="grid grid-cols-2 gap-2">
+                                    {SKILL_TAGS.map((tag) => {
+                                        const Icon = tag.icon;
+                                        return (
+                                            <span
+                                                key={tag.label}
+                                                className={cn(
+                                                    "px-3 py-2 text-sm rounded-lg border border-border bg-muted/40 font-medium",
+                                                    "flex items-center gap-2 cursor-default transition-all duration-200",
+                                                    tag.color
+                                                )}
+                                            >
+                                                <Icon className="w-4 h-4 shrink-0" />
+                                                {tag.label}
+                                            </span>
+                                        );
+                                    })}
+                                </div>
+                            </div>
+
+                            <div className="border border-border rounded-2xl p-6 bg-card/40 backdrop-blur-sm">
+                                <h2 className="text-2xl font-bold mb-4">{t("about.whatIDoHeading")}</h2>
+                                <ul className="flex flex-col gap-3">
+                                    {DATA.whatIDo.map((item, i) => (
+                                        <li key={i} className="flex items-start gap-3 text-sm text-muted-foreground">
+                                            <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-primary shrink-0" />
+                                            {item}
+                                        </li>
+                                    ))}
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
                 </BlurFade>
 
                 <BlurFade delay={BLUR_FADE_DELAY * 6} inView className="relative w-full hidden lg:block">
@@ -236,7 +298,7 @@ export default function Page() {
             </section>
 
             {/* Contact Section */}
-            <section id="contact" className="px-15 mt-20">
+            <section id="contact" className="lg:px-15 px-5 relative mt-20">
                 <ContactSection />
             </section>
         </main>

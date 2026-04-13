@@ -12,6 +12,9 @@ export const bzh: Translations = {
     about: {
         title: "A-zivout ac'hanon",
         summary: "Ma dedenn evit ar programmiñ a zo deuet eus ar skolaj. Abaoe em eus savet meur a raktres, koulz evit ar freelance hag evit ar blijadur personel. E-maez ma labour evel diorroer e labouran evel gward surentez en ur sal-noz. Barregezh pleustrek am eus war ar sevel web hag ar sevel c'hoarioù Roblox.",
+        journeyHeading: "Ma Hent",
+        skillsHeading: "Barregezhioù",
+        whatIDoHeading: "Petra a Ran",
     },
     skills: {
         heading: "Gwezenn barregezhioù",

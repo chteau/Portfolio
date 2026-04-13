@@ -11,6 +11,9 @@ export const fr: Translations = {
     about: {
         title: "À propos",
         summary: "Mon intérêt pour la programmation remonte au collège. Depuis, j'ai réalisé une grande variété de projets, aussi bien en tant que freelance que par intérêt personnel. En plus de mon rôle dans le développement, je travaille comme agent de sécurité dans une boîte de nuit. J'ai une expérience pratique en développement web et en développement de jeux Roblox.",
+        journeyHeading: "Mon Parcours",
+        skillsHeading: "Compétences",
+        whatIDoHeading: "Ce que je fais",
     },
     skills: {
         heading: "Arbre de compétences",

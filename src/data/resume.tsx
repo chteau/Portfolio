@@ -1,5 +1,6 @@
 import { Icons } from "@/components/custom/icons";
-import { HomeIcon } from "lucide-react";
+import { HomeIcon, Flame, Globe, Code2, Atom, Server, Gamepad2, Database, GitBranch, Terminal } from "lucide-react";
+import type { LucideIcon } from "lucide-react";
 
 export type SkillId = "luau" | "webdev";
 
@@ -14,6 +15,18 @@ export const SKILLS: Skill[] = [
     { id: "webdev", icon: "🌐", proficiency: 90 },
 ];
 
+export const SKILL_TAGS: Array<{ label: string; icon: LucideIcon; color: string }> = [
+    { label: "Luau",                  icon: Flame,     color: "hover:border-orange-400/60 hover:bg-orange-400/10 hover:text-orange-300" },
+    { label: "Web Development",       icon: Globe,     color: "hover:border-blue-400/60 hover:bg-blue-400/10 hover:text-blue-300" },
+    { label: "TypeScript / Javascript", icon: Code2,   color: "hover:border-sky-500/60 hover:bg-sky-500/10 hover:text-sky-400" },
+    { label: "React / Next.js",       icon: Atom,      color: "hover:border-cyan-400/60 hover:bg-cyan-400/10 hover:text-cyan-300" },
+    { label: "PHP",                   icon: Server,    color: "hover:border-violet-400/60 hover:bg-violet-400/10 hover:text-violet-300" },
+    { label: "Game Development",      icon: Gamepad2,  color: "hover:border-green-400/60 hover:bg-green-400/10 hover:text-green-300" },
+    { label: "Supabase & MySQL",      icon: Database,  color: "hover:border-emerald-400/60 hover:bg-emerald-400/10 hover:text-emerald-300" },
+    { label: "Version Control (git)", icon: GitBranch, color: "hover:border-red-400/60 hover:bg-red-400/10 hover:text-red-300" },
+    { label: "Node.JS",               icon: Terminal,  color: "hover:border-lime-500/60 hover:bg-lime-500/10 hover:text-lime-400" },
+];
+
 export const DATA = {
     name: "Cheeteau",
     initials: "C.TEAU",
@@ -22,6 +35,39 @@ export const DATA = {
     description:
         "French full-stack developer and security guard. I absolutely love learning new frameworks and techniques as well as bringing projects to life.",
     summary: `My interest in programming dates back to sixth grade. Since then, I have built a wide range of projects, both as a freelancer and purely for personal interest. In addition to my role in development, I am employed as a security guard at a nightclub. I possess hands-on experience in web development and Roblox game development.`,
+    journey: [
+        {
+            year: "2014",
+            title: "Where It All Started",
+            description: "Began exploring programming in sixth grade, igniting a lifelong passion for building things with code using Game Maker.",
+        },
+        {
+            year: "2015",
+            title: "Web Development",
+            description: "Dived deep into full-stack web development, mastering PHP, JavaScript, TypeScript, React and Next.js.",
+        },
+        {
+            year: "2022",
+            title: "Roblox Development",
+            description: "Started scripting Roblox games using Luau, contributing to multiple projects and building custom tools.",
+        },
+        {
+            year: "2023",
+            title: "Freelancing",
+            description: "Began taking on freelance projects, delivering web and game development work for various clients.",
+        },
+        {
+            year: "Now",
+            title: "Developer & Security Guard",
+            description: "Balancing active development work with a role as a security guard in a nightclub, continuing to ship new projects.",
+        },
+    ],
+    whatIDo: [
+        "Design and develop full-stack web applications from concept to launch",
+        "Build Roblox games and tools using Luau, Roblox Studio, VSCode and Argon/Rojo",
+        "Take on freelance projects across web and game development",
+        "Continuously learn and experiment with new frameworks and technologies",
+    ],
     reviews: [
         {
             name: "Viken",
