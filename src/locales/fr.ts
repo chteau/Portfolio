@@ -38,6 +38,14 @@ export const fr: Translations = {
         playButton: "Jouer sur Roblox",
         notReleased: "Ce jeu n'est pas encore sorti !",
     },
+    webProjects: {
+        sectionLabel: "Projets Web",
+        heading: "Sites web que j'ai réalisés",
+        subheading: "Une sélection de projets web réalisés pour des clients ou par intérêt personnel.",
+        demoButton: "Démo live",
+        githubButton: "GitHub",
+        clientLabel: "Client",
+    },
     contact: {
         sectionLabel: "Contact",
         heading: "Travaillons ensemble !",

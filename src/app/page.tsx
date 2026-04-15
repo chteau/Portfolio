@@ -22,6 +22,7 @@ import { useI18n } from "@/lib/i18n";
 import ContactSection from "@/components/section/contact-section";
 import ProjectsSection from "@/components/section/projects-section";
 import GamesSection from "@/components/section/games-section";
+import WebSection from "@/components/section/web-section";
 
 const BLUR_FADE_DELAY = 0.04;
 
@@ -295,6 +296,16 @@ export default function Page() {
                     />
                 </div>
                 <GamesSection />
+            </section>
+
+            {/* Web Projects Section */}
+            <section id="web" className="mt-20 relative">
+                <div className="absolute flex h-full w-full flex-col items-center justify-center overflow-hidden -z-10 opacity-40 top-5">
+                    <DotPattern
+                        className={cn("mask-[radial-gradient(800px_circle_at_center,white,transparent)]")}
+                    />
+                </div>
+                <WebSection />
             </section>
 
             {/* Contact Section */}

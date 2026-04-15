@@ -39,6 +39,14 @@ export const bzh: Translations = {
         playButton: "C'hoari war Roblox",
         notReleased: "N'eo ket bet disklêriet ar c'hoari-mañ c'hoazh!",
     },
+    webProjects: {
+        sectionLabel: "Raktresoù Web",
+        heading: "Lec'hiennoù web m'em eus savet",
+        subheading: "Ul lodenn eus ar raktresoù web m'em eus labourat warno evit klientoù pe evit ar blijadur.",
+        demoButton: "Demo bev",
+        githubButton: "GitHub",
+        clientLabel: "Klient",
+    },
     contact: {
         sectionLabel: "Darempred",
         heading: "Labouromp asambles!",

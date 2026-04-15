@@ -30,6 +30,14 @@ export type Translations = {
         playButton: string;
         notReleased: string;
     };
+    webProjects: {
+        sectionLabel: string;
+        heading: string;
+        subheading: string;
+        demoButton: string;
+        githubButton: string;
+        clientLabel: string;
+    };
     contact: {
         sectionLabel: string;
         heading: string;
@@ -77,6 +85,14 @@ export const en: Translations = {
         subheading: "Here's a selection of some games I worked on or even made.",
         playButton: "Play on Roblox",
         notReleased: "This game isn't released yet!",
+    },
+    webProjects: {
+        sectionLabel: "Web Projects",
+        heading: "Websites I've built",
+        subheading: "A selection of web projects I've worked on for clients and for fun.",
+        demoButton: "Live Demo",
+        githubButton: "GitHub",
+        clientLabel: "Client",
     },
     contact: {
         sectionLabel: "Contact",

@@ -142,8 +142,8 @@ export function GameCard({
                 <Link href={href} target="_blank" rel="noopener noreferrer" className="mt-auto">
                     <button
                         className={cn(
-                            "w-full p-3 cursor-pointer bg-gray-500 rounded-sm hover:opacity-70 transition-all duration-100 ease-in-out",
-                            !released && "opacity-70 cursor-not-allowed grayscale-50",
+                            "w-full p-3 cursor-pointer bg-red-500/50 rounded-sm hover:opacity-70 transition-all duration-100 ease-in-out",
+                            !released && "opacity-70 cursor-not-allowed grayscale-10",
                             "flex items-center justify-center gap-2"
                         )}
                     >

@@ -4,16 +4,38 @@ import type { LucideIcon } from "lucide-react";
 
 export type SkillId = "luau" | "webdev";
 
+export interface WebProject {
+    title: string;
+    description: string;
+    image?: string;
+    technologies: string[];
+    github?: string;
+    demo?: {
+        type: "external" | "internal";
+        url: string; // external: full URL — internal: slug matching public/demos/<slug>/
+    };
+    year: string;
+    client?: boolean; // true if built for a paying client
+}
+
+export const WEB_PROJECTS: WebProject[] = [
+    {
+        title: "Game Studio Website Demo",
+        description: "A simple landing page for a Roblox game studio, built with React and Vite.",
+        image: "/demos/studio-demo/preview.png",
+        technologies: ["React", "Vite", "TailwindCSS"],
+        github: "https://github.com/chteau/studio-demo",
+        demo: { type: "internal", url: "studio-demo" },
+        year: "2026",
+        client: false,
+    },
+];
+
 export interface Skill {
     id: SkillId;
     icon: string;
     proficiency: number;
 }
-
-export const SKILLS: Skill[] = [
-    { id: "luau", icon: "⚡", proficiency: 80 },
-    { id: "webdev", icon: "🌐", proficiency: 90 },
-];
 
 export const SKILL_TAGS: Array<{ label: string; icon: LucideIcon; color: string }> = [
     { label: "Luau",                  icon: Flame,     color: "hover:border-orange-400/60 hover:bg-orange-400/10 hover:text-orange-300" },
