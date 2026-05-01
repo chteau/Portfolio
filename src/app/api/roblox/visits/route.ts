@@ -8,20 +8,18 @@ import { NextResponse } from "next/server";
 // Globals
 const ROBLOX_USER_ID = process.env.ROBLOX_USER_ID!;
 const REQUIRED_RANK = parseInt(process.env.MINIMUM_RANK_REQUIRED!);
+const CACHE_TTL = 24 * 60 * 60 * 1000;
+
+type VisitsCache = { totalContributedVisits: number; fetchedAt: number } | null;
+let visitsCache: VisitsCache = null;
 
 
 // Helpers
-/**
- *
- */
 async function robloxFetch<T>(url: string): Promise<T> {
     const res = await fetch(url, {
         headers: {
             "Accept": "application/json",
         },
-        next: {
-            revalidate: 3600,
-        }
     });
 
     if (!res.ok) {
@@ -110,18 +108,25 @@ async function getGroupGames(groupId: number, cursor: string | null = null, accu
 
 // Route handler
 export async function GET() {
+    if (visitsCache && Date.now() - visitsCache.fetchedAt < CACHE_TTL) {
+        return NextResponse.json({
+            userID: ROBLOX_USER_ID,
+            totalContributedVisits: visitsCache.totalContributedVisits,
+        });
+    }
+
     try {
         const groups = await getContributedGroups();
         let allContributedVisits = 0;
-        let allGames = [];
 
         for (const group of groups) {
             const games = await getGroupGames(group.id);
             for (const game of games) {
-                allGames.push(game);
                 allContributedVisits += game.placeVisits;
             }
         }
+
+        visitsCache = { totalContributedVisits: allContributedVisits, fetchedAt: Date.now() };
 
         return NextResponse.json({
             userID: ROBLOX_USER_ID,
