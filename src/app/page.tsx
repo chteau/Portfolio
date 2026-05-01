@@ -74,7 +74,7 @@ export default function Page() {
             try {
                 const response = await fetch("/api/roblox/visits");
                 const data = await response.json();
-                setTotalContributedVisits(data.totalContributedVisits);
+                setTotalContributedVisits(data.totalContributedVisits || 200 * 1_000_000); // 200M fallback counting
             } catch (error) {
                 console.error("Error loading contributed visits:", error);
             }

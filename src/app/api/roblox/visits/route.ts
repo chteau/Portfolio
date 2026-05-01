@@ -127,8 +127,8 @@ export async function GET() {
             userID: ROBLOX_USER_ID,
             totalContributedVisits: allContributedVisits,
         });
-    } catch (error) {
+    } catch (error: any) {
         console.error("Error fetching Roblox visits data:", error);
-        return NextResponse.json({ error: "Failed to fetch Roblox visits data" }, { status: 500 });
+        return NextResponse.json({ error: "Failed to fetch Roblox visits data", message: error.message }, { status: 500 });
     }
 }
